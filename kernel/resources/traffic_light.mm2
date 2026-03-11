@@ -1,0 +1,34 @@
+;; traffic_light.mm2
+;; Finite State Machine implementation of a traffic light
+;; States: RED, GREEN, YELLOW
+;; Cyclic transitions: RED -> GREEN -> YELLOW -> RED
+
+;; Initialize the traffic light state (only needed once)
+(exec 0
+  (, (init traffic_light))
+  (, (state red))
+)
+
+;; RED -> GREEN
+(exec 1
+  (, (state red))
+  (, (state green))
+)
+
+;; GREEN -> YELLOW
+(exec 1
+  (, (state green))
+  (, (state yellow))
+)
+
+;; YELLOW -> RED
+(exec 1
+  (, (state yellow))
+  (, (state red))
+)
+
+;; Optional: display current state (example of pattern matching)
+(exec 2
+  (, (state $x))
+  (, (display $x))
+)
